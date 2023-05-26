@@ -1,6 +1,7 @@
 import React from 'react'
+import './Wardrobe.css'
 
-function Wardrob() {
+function Wardrobe() {
   return (
     <div>
       Wardrob
@@ -8,4 +9,4 @@ function Wardrob() {
   )
 }
 
-export default Wardrob
+export default Wardrobe
