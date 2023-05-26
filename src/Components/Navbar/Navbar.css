@@ -1,7 +1,57 @@
-.Navbar{
-    display:flex;
-    flex-direction:row;
+.header {
+    width: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    z-index: 999;
     position: fixed;
-    height: 50px;
-    border-bottom: 1px solid red;
+}
+
+.header>img {
+    object-fit: contain;
+    height: 100px;
+    margin-left: 20px;
+}
+
+.header__options {
+    display: flex;
+    margin-right: 50px;
+    align-items: center;
+}
+
+.header__options>p {
+    margin-left: 35px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.header__options>p:hover {
+    color: #9A208C;
+}
+
+.header__options>.MuiSvgIcon-root {
+    margin-left: 35px;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.hamburger {
+    display: none;
+}
+
+@media(max-width:768px) {
+    .header {
+        width: 100%;
+    }
+
+    .hamburger {
+        display: inline;
+    }
+
+    .header__options {
+        display: none;
+    }
 }
