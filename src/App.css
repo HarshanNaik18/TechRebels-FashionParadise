@@ -2,3 +2,18 @@ body{
   padding: 0;
   margin: 0;
 }
+
+.App{
+  border: 1px solid black;
+  margin-top:52px;
+}
+
+.AppBody{
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.AppBody::-webkit-scrollbar {
+  display: none;
+}

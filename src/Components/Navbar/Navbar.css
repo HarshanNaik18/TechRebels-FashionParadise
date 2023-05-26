@@ -1,0 +1,7 @@
+.Navbar{
+    display:flex;
+    flex-direction:row;
+    position: fixed;
+    height: 50px;
+    border-bottom: 1px solid red;
+}
