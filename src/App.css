@@ -5,15 +5,5 @@ body{
 
 .App{
   border: 1px solid black;
-  margin-top:52px;
-}
-
-.AppBody{
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.AppBody::-webkit-scrollbar {
-  display: none;
+  margin-top:51px;
 }
