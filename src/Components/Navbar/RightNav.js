@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Ul = styled.ul`
   list-style: none;
@@ -32,11 +32,12 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open }) => {
+  const navigate = useNavigate();
   return (
     <Ul open={open}>
-      <li >Home</li>
+      <li onClick={()=>navigate('/')} >Home</li>
       <li>AR Room</li>
-      <li>Wardrobe</li>
+      <li onClick={()=>navigate('/wardrobe')} >Wardrobe</li>
       <li>Login</li>
     </Ul>
   )
