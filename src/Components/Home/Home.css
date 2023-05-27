@@ -19,7 +19,7 @@
     font-size: 100px;
     font-weight: bolder;
     background-size: contain;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     object-fit: contain;
     transition: transform 1s ease;
     /* transform: translateX(100vh); */
@@ -53,11 +53,11 @@
     }
 }
 
-.search-section{
+.search-section {
     display: flex;
-    justify-content: space-around;
-    height: 100px;
-    border-bottom: 2px solid #f2f2f2;
+    justify-content: space-between;
+    /* padding: 1rem 2rem; */
+    border-bottom: 2px solid #f1f1f1;
     align-items: center;
 }
 
@@ -69,15 +69,16 @@
     border-radius: 5px;
 }
 
-.search-section input:focus{
+.search-section input:focus {
     outline: none;
     border: 2px solid green;
 }
 
-.select-section{
+.select-section {
     display: flex;
     flex-direction: row;
-    width:60%;
+    justify-content: space-between;
+    width: 60%;
     gap: 1rem;
 }
 
@@ -94,8 +95,67 @@
     outline: none;
 }
 
-.select-section-button:hover{
+.select-section-button:hover {
     cursor: pointer;
     color: #231557;
     border-bottom: #231557;
+}
+
+
+@media screen and (max-width: 950px) {
+    .search-section {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+    .search-section input {
+        padding-left: -20px;
+        height: 1.5rem;
+    }
+
+    .select-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        gap: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .search-section {
+        padding-top: -0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+    .search-section input {
+        padding-left: -20px;
+        width: 80%;
+        height: 0.75rem;
+    }
+
+    .select-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+        gap: 0.5rem;
+        margin-left: -2rem;
+    }
+    .select-section-button {
+        height: 0.75rem;
+        width: min-content;
+        font-size: 0.75rem;
+        font-weight: bolder;
+        font-style: italic;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-self: center;
+        outline: none;
+    }
+
 }

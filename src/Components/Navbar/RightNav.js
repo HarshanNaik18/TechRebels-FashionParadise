@@ -20,6 +20,7 @@ const Ul = styled.ul`
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;
+    z-index:990;
     right: 0;
     height: 100vh;
     width: 300px;
@@ -36,6 +37,7 @@ const RightNav = ({ open }) => {
   return (
     <Ul open={open}>
       <li onClick={()=>navigate('/')} >Home</li>
+      <li onClick={()=>navigate('/explore')} >Explore</li>
       <li>AR Room</li>
       <li onClick={()=>navigate('/wardrobe')} >Wardrobe</li>
       <li>Login</li>

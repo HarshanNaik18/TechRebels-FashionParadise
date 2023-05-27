@@ -1,9 +1,10 @@
-body{
+body {
   padding: 0;
   margin: 0;
 }
 
-.App{
+.App {
   border: 1px solid black;
-  margin-top:51px;
+  margin-top: 51px;
+  min-width: 300px;
 }
