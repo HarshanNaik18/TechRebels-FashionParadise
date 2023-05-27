@@ -15,12 +15,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 540px;
+    height: 500px;
     font-size: 100px;
     font-weight: bolder;
-    background-image: url("https://cdn.strategynewmedia.com/uploads/2019/11/29095009/7-Ways-to-Conquer-ECommerce.jpg");
-    object-fit: cover;
-    background-position: right;
+    background-size: contain;
+    background-repeat:no-repeat;
+    object-fit: contain;
+    transition: transform 1s ease;
+    /* transform: translateX(100vh); */
 }
 
 .welcome-page p {
