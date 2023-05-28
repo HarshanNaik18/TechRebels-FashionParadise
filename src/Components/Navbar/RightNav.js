@@ -14,7 +14,7 @@ const Ul = styled.ul`
     cursor:pointer;
     
   }
-  @media (max-width: 768px) {
+  @media (max-width: 950px) {
     flex-flow: column nowrap;
     background-color: #0D2538;
     position: fixed;

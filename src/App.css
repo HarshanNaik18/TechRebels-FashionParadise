@@ -8,3 +8,14 @@ body {
   margin-top: 51px;
   min-width: 300px;
 }
+
+.AppBody{
+  max-height:100vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.AppBody::-webkit-scrollbar {
+  display: none;
+}
