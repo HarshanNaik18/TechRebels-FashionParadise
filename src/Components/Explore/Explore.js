@@ -64,9 +64,9 @@ function ClothCard() {
 }
 
 const slideBar = {
+    display:'flex',
     width: '0%',
     flex: '0',
-    display: 'none'
 }
 
 function FilterSection({clothesType, isClicked} ){
