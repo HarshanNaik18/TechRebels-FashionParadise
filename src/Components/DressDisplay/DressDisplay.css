@@ -83,3 +83,9 @@
     align-items: baseline;
     border-bottom: 2px solid #f1f3f6;
   }
+
+  .wrapper-card-info-details{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 1rem;
+  }
