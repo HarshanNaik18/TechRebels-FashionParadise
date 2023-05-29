@@ -40,7 +40,7 @@ const RightNav = ({ open }) => {
       <li onClick={()=>navigate('/explore')} >Explore</li>
       <li>AR Room</li>
       <li onClick={()=>navigate('/wardrobe')} >Wardrobe</li>
-      <li>Login</li>
+      <li onClick={()=>navigate('/login')} >Login</li>
     </Ul>
   )
 }
