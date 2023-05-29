@@ -14,8 +14,7 @@ function Home() {
   return (
     <div className='page-container' >
       <Carousel
-        ssr
-        autoPlay
+        autoPlay = {true}
         infinteLoop={true}
         showStatus={false}
         showIndicators={false}

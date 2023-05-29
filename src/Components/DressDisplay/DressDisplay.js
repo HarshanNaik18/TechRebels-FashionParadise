@@ -34,7 +34,7 @@ function DressDisplay({ open, onClose, data }) {
                         <label>(Inclusive of all taxes)</label>
                     </div>
                     <div className='wrapper-card-info-details'>
-                        <p style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
+                        <label style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
                             <label>Size :</label>
                             <select>
                                 <option>S</option>
@@ -42,8 +42,8 @@ function DressDisplay({ open, onClose, data }) {
                                 <option>L</option>
                                 <option>XL</option>
                             </select>
-                        </p>
-                        <p style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
+                        </label>
+                        <label style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
                             <label>color :</label>
                             <select>
                                 <option>Black</option>
@@ -51,7 +51,7 @@ function DressDisplay({ open, onClose, data }) {
                                 <option>Grey</option>
                                 <option>Red</option>
                             </select>
-                        </p>
+                        </label>
                         <label style={{color:'grey', fontSize:'1.3rem',fontWeight:'700'}}>Details :</label>
                         <ul style={{fontSize:'1.1rem', fontWeight:'100'}}>
                             <li>Care Instructions: Machine Wash</li>

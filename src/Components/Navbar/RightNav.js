@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../../Firebase/Firebase';
 
 const Ul = styled.ul`
   list-style: none;
@@ -40,7 +41,10 @@ const RightNav = ({ open }) => {
       <li onClick={()=>navigate('/explore')} >Explore</li>
       <li>AR Room</li>
       <li onClick={()=>navigate('/wardrobe')} >Wardrobe</li>
-      <li onClick={()=>navigate('/login')} >Login</li>
+      {
+        ({auth})?<li onClick={()=>navigate('/login')} >Login</li>:<li onClick={()=>navigate('/profile')} >Profile</li>
+      }
+      
     </Ul>
   )
 }
