@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Explore.css'
+import DressDisplay from '../DressDisplay/DressDisplay';
 // import axios from 'axios';
 
 // const options = {
@@ -22,6 +23,7 @@ import './Explore.css'
 // }
 
 function ClothCard() {
+
     return (
         <div className='explore-section-card-container'>
             <div className='explore-section-card-image'>
@@ -44,16 +46,16 @@ function ClothCard() {
                     </label>
                     &nbsp;S,&nbsp; M,&nbsp; L,&nbsp;XL
                 </label>
-                <div style={{display:'flex', flexDirection:'row',justifyContent:'space-between',width:'100%'}} >
-                    <div className='card-icons' style={{backgroundColor:'#fb641b',color:'white'}} >
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }} >
+                    <div className='card-icons' style={{ backgroundColor: '#fb641b', color: 'white' }} >
                         <label>Book Mark</label>
                         <i class="fa fa-heart-o" aria-hidden="true" ></i>
                     </div>
-                    <div className='card-icons' style={{backgroundColor:'#ff7f00',color:'white'}}>
+                    <div className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white' }}>
                         <label>AR View</label>
                         <i class="fa fa-street-view" aria-hidden="true" ></i>
                     </div>
-                    <div className='card-icons' style={{backgroundColor:'#ff9f00',color:'white'}} >
+                    <div className='card-icons' style={{ backgroundColor: '#ff9f00', color: 'white' }} >
                         <label>Add to Kart</label>
                         <i class="fa fa-shopping-cart" aria-hidden="true" ></i>
                     </div>
@@ -64,87 +66,90 @@ function ClothCard() {
 }
 
 const slideBar = {
-    display:'flex',
+    display: 'flex',
     width: '0%',
     flex: '0',
 }
 
-function FilterSection({clothesType, isClicked} ){
-    return(
+function FilterSection({ clothesType, isClicked }) {
+    return (
         <div className={isClicked ? { slideBar } : 'categoty-section'}>
-        <div className='categoty-section-top' >
-            <p>
-                Filter
-            </p>
-            <i class="fa fa-times" aria-hidden="true" />
+            <div className='categoty-section-top' >
+                <p>
+                    Filter
+                </p>
+                <i class="fa fa-times" aria-hidden="true" />
+            </div>
+            <div className='filter-section'>
+                <div className='filter-area'>
+                    <label>Category</label>
+                    <select >
+                        <option value="">All</option>
+                        {
+                            clothesType.map((type) => (
+                                <option value={type}>{type}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className='filter-area'>
+                    <label>Brand</label>
+                    <select>
+                        <option value="">All</option>
+                        {
+                            clothesType.map((type) => (
+                                <option value={type}>{type}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className='filter-area'>
+                    <label>Price</label>
+                    <select>
+                        <option value="">All</option>
+                        {
+                            clothesType.map((type) => (
+                                <option value={type}>{type}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className='filter-area'>
+                    <label>Colour</label>
+                    <select>
+                        <option value="">All</option>
+                        {
+                            clothesType.map((type) => (
+                                <option value={type}>{type}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className='filter-area'>
+                    <label>Discounts</label>
+                    <select>
+                        <option value="">All</option>
+                        {
+                            clothesType.map((type) => (
+                                <option value={type}>{type}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+            </div>
         </div>
-        <div className='filter-section'>
-            <div className='filter-area'>
-                <label>Category</label>
-                <select >
-                    <option value="">All</option>
-                    {
-                        clothesType.map((type) => (
-                            <option value={type}>{type}</option>
-                        ))
-                    }
-                </select>
-            </div>
-            <div className='filter-area'>
-                <label>Brand</label>
-                <select>
-                    <option value="">All</option>
-                    {
-                        clothesType.map((type) => (
-                            <option value={type}>{type}</option>
-                        ))
-                    }
-                </select>
-            </div>
-            <div className='filter-area'>
-                <label>Price</label>
-                <select>
-                    <option value="">All</option>
-                    {
-                        clothesType.map((type) => (
-                            <option value={type}>{type}</option>
-                        ))
-                    }
-                </select>
-            </div>
-            <div className='filter-area'>
-                <label>Colour</label>
-                <select>
-                    <option value="">All</option>
-                    {
-                        clothesType.map((type) => (
-                            <option value={type}>{type}</option>
-                        ))
-                    }
-                </select>
-            </div>
-            <div className='filter-area'>
-                <label>Discounts</label>
-                <select>
-                    <option value="">All</option>
-                    {
-                        clothesType.map((type) => (
-                            <option value={type}>{type}</option>
-                        ))
-                    }
-                </select>
-            </div>
-        </div>
-    </div>
     );
 }
 
 function Explore() {
     const [isClicked, setIsClicked] = useState(false);
+    const [openDressDisplay, setOpenDressDisplay] = useState(false);
+    const [data, setData] = useState('');
 
     const clothesType = ["WinterWear", "Topwear", "Bottomwear", "Raincoats", "Gowns", "Clothing Accessories", "Jumpsuits and Dungar", "Kurtas", "Ethnic Sets", "Fabrics", "Sarees", "Kids", "Lehenga Cholis", "Windcheaters", "Innerwear and Swimwear", "Tracksuits", "Blazers", "Waistcoats"];
     return (
         <div className='Exlopre-container' >
+            <DressDisplay open={openDressDisplay} onClose={() => setOpenDressDisplay(false)} data={data} />
             <div className='search-section'>
                 {/* <button onClick={() => setIsClicked(!isClicked)}>CLick</button> */}
                 <div style={{ width: "5%", height: "0.5rem" }}></div>
@@ -162,12 +167,17 @@ function Explore() {
                 <div className='display-section'>
                     {
                         clothesType.map((type) => (
-                            <ClothCard />
+                            <div onClick={() => {
+                                setOpenDressDisplay(true);
+                                setData(type);
+                            }}>
+                                <ClothCard />
+                            </div>
                         ))
                     }
 
                 </div>
-               <FilterSection clothesType={clothesType} isClicked = {isClicked} />
+                <FilterSection clothesType={clothesType} isClicked={isClicked} />
             </div>
         </div>
     )
