@@ -1,0 +1,37 @@
+.profile-container{
+    display: flex;
+    height: calc(100vh - 62px);
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #f1f1f3;
+    padding: 10PX 0;
+}
+
+.profile-info-container{
+    width: 24%;
+    height: calc(100vh - 62px);
+    background:#fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-user-info{
+    border-bottom: 2px solid #001;
+}
+
+.profile-user-info ul {
+    display: flex;
+    list-style: none;
+}
+
+.profile-user-info ul li {
+    list-style: none;
+}
+
+.profile-side-display{
+    width: 74%;
+    height: calc(100vh - 62px);
+    background:#fff;
+
+}

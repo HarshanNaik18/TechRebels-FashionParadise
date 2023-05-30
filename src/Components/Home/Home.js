@@ -7,6 +7,7 @@ import carousel0 from '../../Images/carousel0.jpg'
 import carousel1 from '../../Images/carousel1.jpg'
 import carousel2 from '../../Images/carousel2.jpg'
 import carousel3 from '../../Images/carousel3.jpg'
+import Products from '../Recomendation/recomendation';
 
 function Home() {
   const CarouselImage = [carousel0, carousel1, carousel2, carousel3];
@@ -30,9 +31,10 @@ function Home() {
           ))
         }
       </Carousel>
-      <div className='text-banner-title'>
+      {/* <div className='text-banner-title'>
         DEALS OF THE DAY
-      </div>
+      </div> */}
+      <Products />
     </div>
   )
 }

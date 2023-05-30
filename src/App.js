@@ -7,6 +7,8 @@ import Explore from './Components/Explore/Explore';
 import UsersLogin from './Components/LoginAndSignUp/UsersLogin';
 import Signup from './Components/LoginAndSignUp/Signup';
 import Footer from './Components/Footer/Footer';
+import Profile from './Components/Profile/Profile';
+import Cart from './Components/cart/cart'
 
 function App() {
   return (
@@ -16,13 +18,14 @@ function App() {
         <Routes >
           <Route exact path="/" element={<Home />} />
           <Route exact path="/explore" element={<Explore />} />
-          {/* <Route exact path="/recomendation" element={<Products />} />
+          {/* <Route exact path="/recomendation" element={<Products />} /> */}
           <Route exact path="/cart" element={<Cart />} />
-          <Route exact path="/order" element={<Orderlist />} />
-          <Route exact path="/favorite" element={<Favourite />} /> */}
+          {/* <Route exact path="/order" element={<Orderlist />} /> */}
+          {/* <Route exact path="/favorite" element={<Favourite />} /> */}
           <Route exact path="/wardrobe" element={<Wardrobe />} />
           <Route exact path="/login" element={<UsersLogin />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </Router>

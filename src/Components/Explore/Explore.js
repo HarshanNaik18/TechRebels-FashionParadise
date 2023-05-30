@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Explore.css'
 import DressDisplay from '../DressDisplay/DressDisplay';
+import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
 // const options = {
@@ -22,8 +23,9 @@ import DressDisplay from '../DressDisplay/DressDisplay';
 //     }
 // }
 
-function ClothCard() {
 
+function ClothCard() {
+    const navigate = useNavigate();
     return (
         <div className='explore-section-card-container'>
             <div className='explore-section-card-image'>
@@ -46,17 +48,17 @@ function ClothCard() {
                     </label>
                     &nbsp;S,&nbsp; M,&nbsp; L,&nbsp;XL
                 </label>
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }} >
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', zIndex:'1' }}  >
                     <div className='card-icons' style={{ backgroundColor: '#fb641b', color: 'white' }} >
                         <label>Book Mark</label>
                         <i class="fa fa-heart-o" aria-hidden="true" ></i>
                     </div>
-                    <div className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white' }}>
+                    <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white' }} href='http://localhost:3001/' >
                         <label>AR View</label>
                         <i class="fa fa-street-view" aria-hidden="true" ></i>
-                    </div>
+                    </a>
                     <div className='card-icons' style={{ backgroundColor: '#ff9f00', color: 'white' }} >
-                        <label>Add to Kart</label>
+                        <label>Add to Cart</label>
                         <i class="fa fa-shopping-cart" aria-hidden="true" ></i>
                     </div>
                 </div>

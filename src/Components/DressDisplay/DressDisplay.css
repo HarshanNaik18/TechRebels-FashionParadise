@@ -4,6 +4,7 @@
     background: #f1f3f6;
     position: fixed;
     padding: 10px;
+    z-index: 2;
 }
 
 .wrapper-container {

@@ -1,0 +1,27 @@
+.wardrobe-container{
+    width: 100%;
+}
+
+.wardrobe-fav-container{
+    width: 100%;
+    height: 150vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .wardrobe-fav-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wardrobe-ordered-container{
+    width: 100%;
+    height: 150vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .wardrobe-ordered-container::-webkit-scrollbar {
+    display: none;
+  }
