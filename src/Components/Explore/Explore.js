@@ -9,7 +9,6 @@ import { PoductsList } from '../../ProductData/ProductData';
 function ClothCard({product}) {
     const navigate = useNavigate();
 
-
     return (
         <div className='explore-section-card-container'>
             <div className='explore-section-card-image'>
@@ -155,7 +154,7 @@ function Explore() {
 
     return (
         <div className='Exlopre-container' >
-            <DressDisplay open={openDressDisplay} onClose={() => setOpenDressDisplay(false)} product={data} />
+            <DressDisplay open={openDressDisplay} onClose={() => setOpenDressDisplay(false)} product={data} key={data.name} />
             <div className='search-section'>
                 {/* <button onClick={() => setIsClicked(!isClicked)}>CLick</button> */}
                 <div style={{ width: "5%", height: "0.5rem" }}></div>
@@ -172,12 +171,12 @@ function Explore() {
             <div className='explore-section'>
                 <div className='display-section'>
                     {
-                        displayProductData.map((product) => (
+                        displayProductData&&displayProductData.map((product, index) => (
                             <div onClick={() => {
                                 setOpenDressDisplay(true);
                                 setData(product);
                             }}>
-                                <ClothCard product={product} />
+                                <ClothCard product={product} key={index} />
                             </div>
                         ))
                     }

@@ -104,11 +104,11 @@ const Product = ({ item }) => {
       <div className="Container">
         <label>
           <div className="Rating">
-            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
-            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
-            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
-            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
-            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
+          <i class="fa fa-star" aria-hidden="true" style={{ color: `${ item.rating>=1?'#d4af37':'rgb(192,192,192)' }` }} ></i>
+          <i class="fa fa-star" aria-hidden="true" style={{ color: `${ item.rating>=2?'#d4af37':'rgb(192,192,192)' }` }} ></i>
+          <i class="fa fa-star" aria-hidden="true" style={{ color: `${ item.rating>=3?'#d4af37':'rgb(192,192,192)' }` }} ></i>
+          <i class="fa fa-star" aria-hidden="true" style={{ color: `${ item.rating>=4?'#d4af37':'rgb(192,192,192)' }` }} ></i>
+          <i class="fa fa-star" aria-hidden="true" style={{ color: `${ item.rating>=5?'#d4af37':'rgb(192,192,192)' }` }} ></i>
           </div>
         </label>
       </div>

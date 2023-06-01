@@ -43,8 +43,22 @@ function UsersLogin() {
   const handleGoogle =  () => {
     const auth = getAuth();
     const googleAuthProvider = new GoogleAuthProvider();
-    signInWithPopup(auth, googleAuthProvider);
-
+    signInWithPopup(auth, googleAuthProvider).then(async (userCredential) => {
+      setSubmitButtonDisable(false);
+      sessionStorage.setItem("user", JSON.stringify(userCredential.user));
+      toast.success("Login successfull");
+      navigate("/");
+    })
+    .catch((error) => {
+      setSubmitButtonDisable(false);
+      toast.error("Invalid username or password", {
+        autoClose: 2000,
+        pauseOnHover: false,
+        closeOnClick: true
+      });
+      setErrorMsg("Inavlid username or password");
+      console.log(error);
+    })
   }
 
   return (

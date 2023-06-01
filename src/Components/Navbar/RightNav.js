@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../Firebase/Firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const Ul = styled.ul`
   list-style: none;
@@ -35,6 +38,16 @@ const Ul = styled.ul`
 
 const RightNav = ({ open }) => {
   const navigate = useNavigate();
+  const [user, setUser]=useState(false);
+
+
+  useEffect(() => {
+    onAuthStateChanged(auth, curretUser => {
+        if (curretUser) {
+          setUser(true);
+        }
+    });
+}, [user]);
   return (
     <Ul open={open}>
       <li onClick={()=>navigate('/')} >Home</li>
@@ -42,9 +55,14 @@ const RightNav = ({ open }) => {
       <li onClick={()=>navigate('/cart')} >Cart</li>
       <li onClick={()=>navigate('/wardrobe')} >Wardrobe</li>
       {
-        ({auth})?<li onClick={()=>navigate('/login')} >Login</li>:<li onClick={()=>navigate('/profile')} >Profile</li>
+        !(user)?<li onClick={()=>navigate('/login')} >Login</li>:<li onClick={()=>{
+          signOut(auth);
+          toast.error("Logout");
+          sessionStorage.removeItem("user");
+          navigate('/');
+        }} >Logout</li>
       }
-      
+      <ToastContainer/>
     </Ul>
   )
 }

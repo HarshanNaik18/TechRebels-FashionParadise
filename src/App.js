@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Home from './Components/Home/Home';
 import Navbar from './Components/Navbar/Navbar';
@@ -12,6 +13,12 @@ import Cart from './Components/cart/cart'
 import DressDisplay from './Components/DressDisplay/DressDisplay'
 
 function App() {
+
+  const CheckUser = ({ children }) => {
+    const user = sessionStorage.getItem("user");
+    return user ? children : <Navigate to='/login' />;
+  }
+
   return (
     <div className='AppBody'>
       <Router>
@@ -19,15 +26,11 @@ function App() {
         <Routes >
           <Route exact path="/" element={<Home />} />
           <Route exact path="/explore" element={<Explore />} />
-          {/* <Route exact path="/recomendation" element={<Products />} /> */}
-          <Route exact path="/cart" element={<Cart />} />
-          {/* <Route exact path="/order" element={<Orderlist />} /> */}
-          {/* <Route exact path="/favorite" element={<Favourite />} /> */}
-          <Route exact path="/wardrobe" element={<Wardrobe />} />
+          <Route exact path="/cart" element={<CheckUser><Cart /></CheckUser>} />
+          <Route exact path="/wardrobe" element={<CheckUser><Wardrobe /></CheckUser>} />
           <Route exact path="/login" element={<UsersLogin />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/profile" element={<Profile />} />
-          {/* <Route exact path="/product_info" element={<DressDisplay />} /> */}
+          {/* <Route exact path="/profile" element={<Profile />} /> */}
         </Routes>
         <Footer />
       </Router>

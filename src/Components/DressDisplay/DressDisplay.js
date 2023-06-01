@@ -1,23 +1,66 @@
 import React, { useState } from 'react'
 import './DressDisplay.css'
 import { db } from '../../Firebase/Firebase'
-import { collection, setDoc, doc } from 'firebase/firestore';
+import { collection, setDoc, doc, addDoc } from 'firebase/firestore';
 import { auth } from '../../Firebase/Firebase';
-
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function DressDisplay({ open, onClose, product }) {
     const img = ["https://m.media-amazon.com/images/I/61VxZexOopL._UX679_.jpg", "https://m.media-amazon.com/images/I/6134ZYQDdRL._UX679_.jpg", "https://m.media-amazon.com/images/I/51pJ7pJX+xL._UX679_.jpg", "https://m.media-amazon.com/images/I/51LpmgFcC0L._UX679_.jpg", "https://m.media-amazon.com/images/I/514Teh0-U8L._UX679_.jpg",];
     const [displayImg, setDisplayImg] = useState("https://m.media-amazon.com/images/I/61VxZexOopL._UX679_.jpg");
     if (!open) return null;
 
-    const addToCart = async(e) => {
+    const addToCart = async (e) => {
         e.preventDefault();
         const collectionRef = collection(db, "cart");
-        await setDoc(doc(collectionRef,"uid-"+product.name), {
-            product:product
-        });
+        await addDoc(collectionRef, {
+            user: auth.currentUser.uid,
+            name: product.name,
+            brand: product.brand,
+            rating: product.rating,
+            noOfRatings: product.noOfRatings,
+            price: product.price,
+            off: product.off,
+            gender: product.gender,
+            categoty: product.categoty,
+            season: product.season,
+            loc: product.loc,
+            size: product.size,
+            color: product.color,
+            images: product.images,
+            instructions: product.instructions
+        }).then(() => toast.success("Added to cart"))
+            .catch((e) => {
+                console.log(e);
+                toast.error("Error while adding to cart")
+            })
+    }
 
-        console.log(auth.uid);
+    const addToFav = async (e) => {
+        e.preventDefault();
+        const collectionRef = collection(db, "fav");
+        await addDoc(collectionRef, {
+            user: auth.currentUser.uid,
+            name: product.name,
+            brand: product.brand,
+            rating: product.rating,
+            noOfRatings: product.noOfRatings,
+            price: product.price,
+            off: product.off,
+            gender: product.gender,
+            categoty: product.categoty,
+            season: product.season,
+            loc: product.loc,
+            size: product.size,
+            color: product.color,
+            images: product.images,
+            instructions: product.instructions
+        }).then(() => toast.success("Added to cart"))
+            .catch((e) => {
+                console.log(e);
+                toast.error("Error while adding to cart")
+            })
     }
 
 
@@ -53,23 +96,19 @@ function DressDisplay({ open, onClose, product }) {
                     <div className='wrapper-card-info-details'>
                         <label style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
                             <label>Size :</label>
-                            <select>
-                                {
-                                    product.size.map((size) => (
-                                        <option value={size}>{size.toUpperCase()}</option>
-                                    ))
-                                }
-                            </select>
+                            {
+                                product.size.map((size) => (
+                                    <>&nbsp;&nbsp;{size.toUpperCase()}</>
+                                ))
+                            }
                         </label>
                         <label style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
                             <label>color :</label>
-                            <select>
-                                {
-                                    product.color.map((color) => (
-                                        <option value={color}>{color.toUpperCase()}</option>
-                                    ))
-                                }
-                            </select>
+                            {
+                                product.color.map((color) => (
+                                    <>&nbsp;&nbsp;{color.toUpperCase()}</>
+                                ))
+                            }
                         </label>
                         <label style={{ color: 'grey', fontSize: '1.3rem', fontWeight: '700' }}>Details :</label>
                         <ul style={{ fontSize: '0.8rem', fontWeight: '100' }}>
@@ -81,11 +120,11 @@ function DressDisplay({ open, onClose, product }) {
                         </ul>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', zIndex: '1' }}  >
-                        <div className='card-icons' style={{ backgroundColor: '#fb641b', color: 'white' }} >
+                        <div className='card-icons' style={{ backgroundColor: '#fb641b', color: 'white' }} onClick={addToFav} >
                             <label>Book Mark</label>
                             <i class="fa fa-heart-o" aria-hidden="true" ></i>
                         </div>
-                        <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', textDecoration: "none" }} href='https://ar-rooms-tech-rebels.netlify.app/' >
+                        <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', textDecoration: "none" }} href='' >
                             <label>AR View</label>
                             <i class="fa fa-street-view" aria-hidden="true" ></i>
                         </a>
@@ -95,7 +134,6 @@ function DressDisplay({ open, onClose, product }) {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )
