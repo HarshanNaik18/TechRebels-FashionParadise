@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './DressDisplay.css'
 import { db } from '../../Firebase/Firebase'
 import { collection, setDoc, doc } from 'firebase/firestore';
-
+import { auth } from '../../Firebase/Firebase';
 
 
 function DressDisplay({ open, onClose, product }) {
@@ -12,16 +12,12 @@ function DressDisplay({ open, onClose, product }) {
 
     const addToCart = async(e) => {
         e.preventDefault();
-        const collectionRef = collection(db, "cart");
-        const docRef = doc(collectionRef,"uid");
-        await setDoc(doc(docRef,"1"), {
-            product:product
-        });
-        // collectionRef.updateData([
-        //     "regions": FieldValue.arrayUnion(["greater_virginia"])
-        // ])
+        // const collectionRef = collection(db, "cart");
+        // await setDoc(doc(collectionRef,"uid-"+product.name), {
+        //     product:product
+        // });
 
-        console.log("done");
+        console.log(auth.uid);
     }
 
 
