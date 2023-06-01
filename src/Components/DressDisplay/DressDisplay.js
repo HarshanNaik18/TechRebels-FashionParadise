@@ -12,10 +12,10 @@ function DressDisplay({ open, onClose, product }) {
 
     const addToCart = async(e) => {
         e.preventDefault();
-        // const collectionRef = collection(db, "cart");
-        // await setDoc(doc(collectionRef,"uid-"+product.name), {
-        //     product:product
-        // });
+        const collectionRef = collection(db, "cart");
+        await setDoc(doc(collectionRef,"uid-"+product.name), {
+            product:product
+        });
 
         console.log(auth.uid);
     }
