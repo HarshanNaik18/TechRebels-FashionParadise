@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './DressDisplay.css'
 import { db } from '../../Firebase/Firebase'
 import { collection, setDoc, doc, addDoc } from 'firebase/firestore';
@@ -6,10 +6,12 @@ import { auth } from '../../Firebase/Firebase';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-function DressDisplay({ open, onClose, product }) {
-    const img = ["https://m.media-amazon.com/images/I/61VxZexOopL._UX679_.jpg", "https://m.media-amazon.com/images/I/6134ZYQDdRL._UX679_.jpg", "https://m.media-amazon.com/images/I/51pJ7pJX+xL._UX679_.jpg", "https://m.media-amazon.com/images/I/51LpmgFcC0L._UX679_.jpg", "https://m.media-amazon.com/images/I/514Teh0-U8L._UX679_.jpg",];
+// function DressDisplay({ open, onClose, product }) {
+function DressDisplay() {
+    const [product, setProducts] = useState({});
+
     const [displayImg, setDisplayImg] = useState("https://m.media-amazon.com/images/I/61VxZexOopL._UX679_.jpg");
-    if (!open) return null;
+    // if (!open) return null;
 
     const addToCart = async (e) => {
         e.preventDefault();
@@ -34,8 +36,10 @@ function DressDisplay({ open, onClose, product }) {
             .catch((e) => {
                 console.log(e);
                 toast.error("Error while adding to cart")
-            })
+            });
+
     }
+
 
     const addToFav = async (e) => {
         e.preventDefault();
@@ -56,13 +60,24 @@ function DressDisplay({ open, onClose, product }) {
             color: product.color,
             images: product.images,
             instructions: product.instructions
-        }).then(() => toast.success("Added to cart"))
+        })
+            .then(() => toast.success("Added to cart"))
             .catch((e) => {
                 console.log(e);
-                toast.error("Error while adding to cart")
+                toast.error("Error while adding to cart");
             })
     }
-
+    useEffect(() => {
+        const getProductData = () => {
+            setProducts(JSON.parse(sessionStorage.getItem("Display-Product")));
+            console.log(product);
+            console.log(product.images);
+        }
+        return () => {
+            getProductData();
+        };
+        //eslint-disable-next-line
+    }, []);
 
     return (
         <div className='overlay-wrapper' >
@@ -71,7 +86,7 @@ function DressDisplay({ open, onClose, product }) {
                 <div className='wrapper-img-container'>
                     <div className='wrapper-img-array-container' >
                         {
-                            product.images.map((pic) => (
+                            product.images && product.images.map((pic) => (
                                 <img src={pic} onClick={() => setDisplayImg(pic)} alt="" />
                             ))
                         }
@@ -80,8 +95,8 @@ function DressDisplay({ open, onClose, product }) {
                 </div>
                 <div className='wrapper-card-info-container'>
                     <div className='wrapper-card-info-header'>
-                        <label style={{ fontSize: '1.5rem', fontWeight: '800' }} >Brand : {product.brand.toUpperCase()}</label>
-                        <i class="fa fa-times" aria-hidden="true" style={{ marginRight: '1rem', fontWeight: 'bold', fontSize: '2rem', color: 'red' }} onClick={onClose}></i>
+                        {/* <label style={{ fontSize: '1.5rem', fontWeight: '800' }} >Brand : {product.brand.toUpperCase()}</label> */}
+                        {/* <i class="fa fa-times" aria-hidden="true" style={{ marginRight: '1rem', fontWeight: 'bold', fontSize: '2rem', color: 'red' }} onClick={onClose}></i> */}
                     </div>
                     <div className='wrapper-card-info-price-section'>
                         <label style={{ fontSize: '2rem', fontWeight: '800' }}>
@@ -97,7 +112,7 @@ function DressDisplay({ open, onClose, product }) {
                         <label style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
                             <label>Size :</label>
                             {
-                                product.size.map((size) => (
+                                product.size && product.size.map((size) => (
                                     <>&nbsp;&nbsp;{size.toUpperCase()}</>
                                 ))
                             }
@@ -105,7 +120,7 @@ function DressDisplay({ open, onClose, product }) {
                         <label style={{ display: 'flex', gap: '10px', fontSize: '1.2rem', fontWeight: '600', color: "grey" }}>
                             <label>color :</label>
                             {
-                                product.color.map((color) => (
+                                product.color && product.color.map((color) => (
                                     <>&nbsp;&nbsp;{color.toUpperCase()}</>
                                 ))
                             }
@@ -113,7 +128,7 @@ function DressDisplay({ open, onClose, product }) {
                         <label style={{ color: 'grey', fontSize: '1.3rem', fontWeight: '700' }}>Details :</label>
                         <ul style={{ fontSize: '0.8rem', fontWeight: '100' }}>
                             {
-                                product.instructions.map((instructions) => (
+                                product.instructions && product.instructions.map((instructions) => (
                                     <li>{instructions}</li>
                                 ))
                             }

@@ -3,10 +3,9 @@ body {
   margin: 0;
 }
 
-.App {
-  border: 1px solid black;
-  margin-top: 51px;
-  min-width: 300px;
+.app {
+  width: 100%;
+  padding-top: 59px;
 }
 
 .AppBody{

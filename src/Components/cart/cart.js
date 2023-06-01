@@ -6,13 +6,14 @@ import styled from 'styled-components';
 import './basket.css'
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { auth, db } from '../../Firebase/Firebase';
-const Cartbg = styled.div`
-background-color:lightgrey;
-`
+
 
 
 const Cart = () => {
-  const [cartData, setCartData] = useState();
+  const [cartData, setCartData] = useState([]);
+
+  const Cartbg = styled.div`
+  background-color:${cartData.length > 0 ?'lightgrey':'white'};`
   useEffect(() => {
     const collectionRef = collection(db, "cart");
     const userid = auth.currentUser.uid;
@@ -37,13 +38,13 @@ const Cart = () => {
         <p>Your shopping basket</p>
       </div>
       {
-        cartData&&cartData.map((item, index) => (
+        cartData.length>0?
+        cartData && cartData.map((item, index) => (
           <Basket product={item} key={index} />
         ))
+        :
+        <h1 style={{width:'100%',textAlign:'center',background:'white'}} >Cart is Empty</h1>
       }
-      {/* {
-        JSON.stringify(cartData)
-      } */}
     </Cartbg>
   )
 

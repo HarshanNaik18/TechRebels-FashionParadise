@@ -8,7 +8,6 @@ import Explore from './Components/Explore/Explore';
 import UsersLogin from './Components/LoginAndSignUp/UsersLogin';
 import Signup from './Components/LoginAndSignUp/Signup';
 import Footer from './Components/Footer/Footer';
-import Profile from './Components/Profile/Profile';
 import Cart from './Components/cart/cart'
 import DressDisplay from './Components/DressDisplay/DressDisplay'
 
@@ -23,6 +22,7 @@ function App() {
     <div className='AppBody'>
       <Router>
         <Navbar />
+        <div className='app'>
         <Routes >
           <Route exact path="/" element={<Home />} />
           <Route exact path="/explore" element={<Explore />} />
@@ -30,8 +30,9 @@ function App() {
           <Route exact path="/wardrobe" element={<CheckUser><Wardrobe /></CheckUser>} />
           <Route exact path="/login" element={<UsersLogin />} />
           <Route exact path="/signup" element={<Signup />} />
-          {/* <Route exact path="/profile" element={<Profile />} /> */}
+          <Route exact path="/show_details" element={<DressDisplay />} />
         </Routes>
+        </div>
         <Footer />
       </Router>
     </div>

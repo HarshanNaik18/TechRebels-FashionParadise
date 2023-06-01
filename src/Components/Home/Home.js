@@ -1,6 +1,7 @@
 import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { useNavigate } from 'react-router-dom';
 import './Home.css'
 // import carousel from '../../Images/carousel.jpg';
 import carousel0 from '../../Images/carousel0.jpg'
@@ -11,11 +12,11 @@ import Products from '../Recomendation/recomendation';
 
 function Home() {
   const CarouselImage = [carousel0, carousel1, carousel2, carousel3];
-
+  const navigate = useNavigate();
   return (
     <div className='page-container' >
       <Carousel
-        autoPlay = {true}
+        autoPlay={true}
         infinteLoop={true}
         showStatus={false}
         showIndicators={false}
@@ -25,15 +26,12 @@ function Home() {
       >
         {
           CarouselImage.map((url) => (
-            <div>
+            <div onClick={() => navigate('/explore')} >
               <img src={url} alt='' />
             </div>
           ))
         }
       </Carousel>
-      {/* <div className='text-banner-title'>
-        DEALS OF THE DAY
-      </div> */}
       <Products />
     </div>
   )

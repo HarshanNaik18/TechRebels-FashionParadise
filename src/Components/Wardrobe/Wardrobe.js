@@ -49,27 +49,7 @@ function Wardrobe() {
   const a = [1, 2, 3, 4, 5, 6, 7, 8,9,];
   return (
     <div className='wardrobe-container'>
-      <div className='wardrobe-fav-container'>
-        <h1 style={{ paddingLeft: '2rem' }} >Your Favourites</h1>
-        <div style={{
-          display: 'flex',
-          width: '95%',
-          flexWrap: 'wrap',
-          justifyContent: 'space-around',
-          gap: '10px'
-        }}>
-          {
-            a.map((item) => (
-              <FavCard />
-            ))
-          }
-          <FavCard />
-        </div>
-      </div>
-      <div className='wardrobe-ordered-container'>
-        <h1 style={{ paddingLeft: '2rem' }} >Ordered</h1>
-        <Orderlist />
-      </div>
+      wardrobe
     </div>
   )
 }

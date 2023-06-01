@@ -1,50 +1,126 @@
 .search-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
     background-color: #fff;
     align-items: center;
     margin: 0;
     padding: 0;
+    min-height: 75px;
 }
 
+/* . */
+.filter-area {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-direction: column;
+    padding-bottom: 5px;
+}
+
+.filter-area label {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 800;
+    width:100%;
+    color: #3e4152;
+}
+
+.filter-area select {
+    border: 3px solid whitesmoke;
+    height: 1.5rem;
+    width:100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.filter-area select:focus {
+    outline: none;
+    border: 3px solid lightblue;
+}
+
+.filter-area select option {
+    background: #f1f3f6;
+}
+/* . */
+
 .search-section input {
-    width: 15rem;
+    width: 15%;
     height: 1.5rem;
     padding-left: 20px;
-    border: 2px solid #231557;
-    border-radius: 5px;
+    border: 3px solid #231557;
+    border-radius: 10px;
 }
 
 .search-section input:focus {
     outline: none;
-    border: 2px solid green;
+    border: 3px solid green;
 }
 
-.select-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 60%;
-    gap: 1rem;
+@media screen and (max-width: 800px){
+    .filter-area {
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        flex-direction: column;
+    }
+    .filter-area label {
+        font-size: 0.75rem;
+        font-weight: 800;
+        width:100%;
+        color: #3e4152;
+    }
+
+    .filter-area select {
+        border: 3px solid whitesmoke;
+        height: 1rem;
+        font-size: 0.6rem;
+        width:100%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    
+    .search-section input {
+        width: 175px;
+        height: 1rem;
+        border: 3px solid #231557;
+        border-radius: 5px;
+    }
 }
 
-.select-section-button {
-    width: 6rem;
-    height: 1rem;
-    font-size: 1rem;
-    font-weight: bolder;
-    font-style: italic;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-self: center;
-    outline: none;
-}
+@media screen and (max-width: 430px){
+    .filter-area {
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        flex-direction: column;
+    }
+    .filter-area label {
+        font-size: 0.75rem;
+        font-weight: 800;
+        width:100%;
+        color: #3e4152;
+    }
 
-.select-section-button:hover {
-    cursor: pointer;
-    color: #231557;
-    border-bottom: #231557;
+    .filter-area select {
+        border: 3px solid whitesmoke;
+        height: 1rem;
+        font-size: 0.6rem;
+        width:100%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    
+    .search-section input {
+        width: 125px;
+        height: 1rem;
+        border: 3px solid #231557;
+        border-radius: 5px;
+    }
 }
 
 .text-banner-title {
@@ -57,68 +133,6 @@
     font-weight: 700;
 }
 
-
-@media screen and (max-width: 950px) {
-    .search-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .search-section input {
-        /* padding-left: -20px; */
-        height: 1.5rem;
-    }
-
-    .select-section {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        width: 100%;
-        gap: 0.5rem;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .search-section {
-        padding-top: -0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .search-section input {
-        padding-left: -20px;
-        width: 80%;
-        height: 0.75rem;
-    }
-
-    .select-section {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 80%;
-        gap: 0.5rem;
-        margin-left: -2rem;
-    }
-
-    .select-section-button {
-        height: 0.75rem;
-        width: min-content;
-        font-size: 0.75rem;
-        font-weight: bolder;
-        font-style: italic;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        justify-self: center;
-        outline: none;
-    }
-
-}
-
 .Exlopre-container {
     display: flex;
     width: 100%;
@@ -128,16 +142,10 @@
     padding-bottom: 10px;
 }
 
-.explore-section {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
 
 .display-section {
     display: flex;
-    flex: 0.74;
+    width: calc(100%-20px);
     background-color: #fff;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -284,30 +292,3 @@ i {
     gap: 0.5rem;
 }
 
-.filter-area {
-    display: flex;
-    width: 100%;
-    gap: 5px;
-    flex-direction: column;
-}
-
-.filter-area label {
-    font-size: 1rem;
-    font-weight: 800;
-    color: #3e4152;
-}
-
-.filter-area select {
-    border: 3px solid whitesmoke;
-    height: 1.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.filter-area select:focus {
-    outline: none;
-    border: 3px solid lightblue;
-}
-
-.filter-area select option {
-    background: #f1f3f6;
-}
