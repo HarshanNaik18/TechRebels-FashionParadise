@@ -42,7 +42,7 @@ const RightNav = ({ open }) => {
       <li onClick={()=>navigate('/cart')} >Cart</li>
       <li onClick={()=>navigate('/wardrobe')} >Wardrobe</li>
       {
-        !({auth})?<li onClick={()=>navigate('/login')} >Login</li>:<li onClick={()=>navigate('/profile')} >Profile</li>
+        ({auth})?<li onClick={()=>navigate('/login')} >Login</li>:<li onClick={()=>navigate('/profile')} >Profile</li>
       }
       
     </Ul>

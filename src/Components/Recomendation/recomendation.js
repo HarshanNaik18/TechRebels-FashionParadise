@@ -1,17 +1,8 @@
 import React from 'react'
-import styled from "styled-components";
-
 import { popularProducts } from "../cart/data";
 import Product from "./product";
 import "./recomendation.css";
-
-const container = styled.div`
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
- 
-`;
+import { PoductsList } from '../../ProductData/ProductData';
 
 const Products = () => {
   return (
@@ -20,14 +11,9 @@ const Products = () => {
         <p>Deals of The Day...</p>
       </div>
 
-      <div className="inner_container">
+      <div className="home-inner_container">
         {
-          popularProducts.map((item) => (
-            <Product item={item} key={item.id} />
-          ))
-        }
-        {
-          popularProducts.map((item) => (
+          PoductsList.map((item) => (
             <Product item={item} key={item.id} />
           ))
         }

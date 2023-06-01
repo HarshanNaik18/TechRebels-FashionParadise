@@ -1,66 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Explore.css'
 import DressDisplay from '../DressDisplay/DressDisplay';
 import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
-
-// const options = {
-//     method: 'GET',
-//     url: 'https://kohls.p.rapidapi.com/categories/list',
-//     headers: {
-//         'X-RapidAPI-Key': '8e0781e248mshc3c3811e36f7cedp13f068jsneed813f35f7a',
-//         'X-RapidAPI-Host': 'kohls.p.rapidapi.com'
-//     }
-// };
-
-// const getData = async() => {
-//     try {
-//         const response = await axios.request(options);
-//         console.log(response.data);
-//         return response.data;
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
+import { PoductsList } from '../../ProductData/ProductData';
 
 
-function ClothCard() {
+function ClothCard({product}) {
     const navigate = useNavigate();
+
+
     return (
         <div className='explore-section-card-container'>
             <div className='explore-section-card-image'>
-                <img src='https://m.media-amazon.com/images/I/41WbpBOdPIL._AC_UL600_FMwebp_QL65_.jpg' alt='' />
+                <img src={product.images[0]} alt='' />
             </div>
             <div className='explore-section-card-info'>
                 <label style={{ fontWeight: '800', color: '#3e4152', fontSize: '1rem' }} >
-                    Name
+                    {product.name}
                 </label>
                 <label style={{ fontWeight: '800', fontSize: '1.1rem' }}>
                     <i class="fa fa-inr" aria-hidden="true" style={{ fontWeight: '800', fontSize: '0.75rem' }}></i>
-                    500 &emsp;
-                    <label style={{ fontSize: '0.8rem', color: 'green' }} >
-                        30% off
+                    {product.price} &emsp;
+                    <label style={{ fontSize: '1.5rem', color: 'green', fontWeight:'1000' }} >
+                    {product.off}% off
                     </label>
                 </label>
                 <label style={{ fontSize: '0.9rem', fontWeight: '800' }}>
                     <label style={{ fontWeight: '800', color: '#3e4152', fontSize: '.75rem' }}>
                         Size :
                     </label>
-                    &nbsp;S,&nbsp; M,&nbsp; L,&nbsp;XL
+                    {
+                        product.size.map((size)=>(
+                            <>&nbsp;&nbsp;{size.toUpperCase()}</>
+                        ))
+                    }
+                    {/* &nbsp;S,&nbsp; M,&nbsp; L,&nbsp;XL */}
                 </label>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', zIndex:'1' }}  >
-                    <div className='card-icons' style={{ backgroundColor: '#fb641b', color: 'white' }} >
-                        <label>Book Mark</label>
-                        <i class="fa fa-heart-o" aria-hidden="true" ></i>
+                    <div className='card-icons-one' style={{ backgroundColor: '#fb641b', color: 'white' }} >
+                        <label>View in Detail</label>
+                        <i class="" aria-hidden="true" ></i>
                     </div>
-                    <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white' }} href='http://localhost:3001/' >
+                    {/* <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', textDecoration:"none" }} href='http://localhost:3001/' >
                         <label>AR View</label>
                         <i class="fa fa-street-view" aria-hidden="true" ></i>
                     </a>
-                    <div className='card-icons' style={{ backgroundColor: '#ff9f00', color: 'white' }} >
+                    <div className='card-icons' style={{ backgroundColor: '#ff9f00', color: 'white' }} onClick={addToCart} >
                         <label>Add to Cart</label>
                         <i class="fa fa-shopping-cart" aria-hidden="true" ></i>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
@@ -147,11 +136,26 @@ function Explore() {
     const [isClicked, setIsClicked] = useState(false);
     const [openDressDisplay, setOpenDressDisplay] = useState(false);
     const [data, setData] = useState('');
+    const [displayProductData, setDisplayProductData]=useState([]);
 
     const clothesType = ["WinterWear", "Topwear", "Bottomwear", "Raincoats", "Gowns", "Clothing Accessories", "Jumpsuits and Dungar", "Kurtas", "Ethnic Sets", "Fabrics", "Sarees", "Kids", "Lehenga Cholis", "Windcheaters", "Innerwear and Swimwear", "Tracksuits", "Blazers", "Waistcoats"];
+
+    useEffect(() => {
+        const getDisplayData = () =>{
+            const dataList = [];
+            PoductsList.map((data)=>(
+                dataList.push(data)
+            ));
+            setDisplayProductData(dataList);
+        }
+      return () => {
+        getDisplayData();
+      };
+    }, []);
+
     return (
         <div className='Exlopre-container' >
-            <DressDisplay open={openDressDisplay} onClose={() => setOpenDressDisplay(false)} data={data} />
+            <DressDisplay open={openDressDisplay} onClose={() => setOpenDressDisplay(false)} product={data} />
             <div className='search-section'>
                 {/* <button onClick={() => setIsClicked(!isClicked)}>CLick</button> */}
                 <div style={{ width: "5%", height: "0.5rem" }}></div>
@@ -168,12 +172,12 @@ function Explore() {
             <div className='explore-section'>
                 <div className='display-section'>
                     {
-                        clothesType.map((type) => (
+                        displayProductData.map((product) => (
                             <div onClick={() => {
                                 setOpenDressDisplay(true);
-                                setData(type);
+                                setData(product);
                             }}>
-                                <ClothCard />
+                                <ClothCard product={product} />
                             </div>
                         ))
                     }

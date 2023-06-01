@@ -9,6 +9,7 @@ import Signup from './Components/LoginAndSignUp/Signup';
 import Footer from './Components/Footer/Footer';
 import Profile from './Components/Profile/Profile';
 import Cart from './Components/cart/cart'
+import DressDisplay from './Components/DressDisplay/DressDisplay'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/login" element={<UsersLogin />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/profile" element={<Profile />} />
+          {/* <Route exact path="/product_info" element={<DressDisplay />} /> */}
         </Routes>
         <Footer />
       </Router>

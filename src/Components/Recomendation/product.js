@@ -1,14 +1,5 @@
-// import {
-//     FavoriteBorderOutlined,
-//     SearchOutlined,
-//     ShoppingCartOutlined,
-
-// } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
-// import { FaStar } from "react-icons/fa";
-
-
 
 
 const Info = styled.div`
@@ -56,9 +47,9 @@ const Image = styled.img`
   height: 75%;
   z-index: 2;
 `;
-const Offer=styled.div`
-color:blue;
-`;
+// const Offer=styled.div`
+// color:blue;
+// `;
 const Icon = styled.div`
   width: 40px;
   height: 40px;
@@ -74,58 +65,59 @@ const Icon = styled.div`
     transform: scale(1.1);
   }
 `;
-const Name = styled.div`
-display:flex;
-flex:flex-wrap;
-position: bottom;
-align-items:baseline;
-`;
+// const Name = styled.div`
+// display:flex;
+// flex:flex-wrap;
+// position: bottom;
+// align-items:baseline;
+// `;
 
 const Product = ({ item }) => {
-    return (
+  var rate = [false,false,false,false,false];
+  for(var i=0;i<5;i++){
+    if(item.rating >= (i+1)){
+      rate[i]=true;
+    }
+  }
+  return (
+    <Containers>
+      <Circle />
+      <Image src={item.images[0]} />
+      <Info>
+        <Icon>
+          {/* <ShoppingCartOutlined /> */}
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        </Icon>
+        <Icon>
+          {/* <SearchOutlined /> */}
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </Icon>
+        <Icon>
+          {/* <FavoriteBorderOutlined /> */}
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
+        </Icon>
+      </Info>
 
-            <Containers>
- 
-   
-                <Circle />
-                <Image src={item.img} />
-                <Info>
-                    <Icon>
-                        {/* <ShoppingCartOutlined /> */}
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </Icon>
-                    <Icon>
-                        {/* <SearchOutlined /> */}
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </Icon>
-                    <Icon>
-                        {/* <FavoriteBorderOutlined /> */}
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    </Icon>
-                </Info>
-                
-                <div className="details">
-                    <p>{item.info}</p>
-                </div>
-       <div className="Container">
-            <label>
-            
-              <div className="Rating">
-              <i class="fa fa-star" aria-hidden="true" style={{color:'rgb(192,192,192)'}} ></i>
-              <i class="fa fa-star" aria-hidden="true"  style={{color:'rgb(192,192,192)'}} ></i>
-              <i class="fa fa-star" aria-hidden="true"  style={{color:'rgb(192,192,192)'}} ></i>
-              <i class="fa fa-star" aria-hidden="true"  style={{color:'rgb(192,192,192)'}} ></i>
-              <i class="fa fa-star" aria-hidden="true"  style={{color:'rgb(192,192,192)'}} ></i>
+      <div className="details">
+        <p>{item.name}</p>
+      </div>
+      <div className="Container">
+        <label>
+          <div className="Rating">
+            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
+            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
+            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
+            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
+            <i class="fa fa-star" aria-hidden="true" style={{ color: 'rgb(192,192,192)' }} ></i>
           </div>
+        </label>
+      </div>
+      <div className="rupee">
+        <p style={{ fontWeight: '1000', fontSize: '1rem' }} >&#x20B9;{item.price} &nbsp;&nbsp;&nbsp;<label style={{ fontSize: '1.5rem', fontWeight: '1000', color: 'green' }} >{item.off}%&nbsp;off</label></p>
+      </div>
+    </Containers>
 
-            </label>
-            </div>
-            <div className="rupee">
-            <p>&#x20B9;{item.rupee} &nbsp;&nbsp;{item.offer}</p>
-            </div>
-            </Containers>
-
-    );
+  );
 };
 
 export default Product;

@@ -44,7 +44,7 @@ function Signup() {
             toast.warning("Password is not matching");
             return;
         }
-        setSubmitButtonDisable(false);
+        setSubmitButtonDisable(true);
 
         createUserWithEmailAndPassword(auth, email, password)
             .then(async (userCreadential) => {
