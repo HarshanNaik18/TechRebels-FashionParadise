@@ -85,7 +85,7 @@ function DressDisplay({ open, onClose, product }) {
                             <label>Book Mark</label>
                             <i class="fa fa-heart-o" aria-hidden="true" ></i>
                         </div>
-                        <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', textDecoration: "none" }} href='http://localhost:3001/' >
+                        <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', textDecoration: "none" }} href='https://ar-rooms-tech-rebels.netlify.app/' >
                             <label>AR View</label>
                             <i class="fa fa-street-view" aria-hidden="true" ></i>
                         </a>
