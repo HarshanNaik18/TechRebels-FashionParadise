@@ -58,7 +58,6 @@ function Explore() {
     const [ratingValue, setRatingValue] = useState(0);
     const [search, setSearch] = useState('');
 
-    const section = ["Male", "Female", "Kids", "Sports"];
     const Category = ["T-Shirt", "Topwear", "Bottomwear", "Raincoats", "Gowns", "Kurtas", "Ethnic-Sets", "Fabrics", "Sarees", "Kids", "Windcheaters", "Tracksuits", "Blazers", "Waistcoats"];
     const brand = ['Puma', "Nike", "One8", "Levi's"];
 
@@ -68,8 +67,10 @@ function Explore() {
 
     useEffect(() => {
         const filterData = () => {
-            const data = PoductsList.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()) && item.brand.toLowerCase().includes(brandValue.toLowerCase()) && item.categoty.toLowerCase().includes(categoryValue.toLowerCase()) && item.rating >= parseInt(ratingValue));
+            const data = PoductsList.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()) && item.brand.toLowerCase().includes(brandValue.toLowerCase()) && item.gender.toLowerCase().includes(categoryValue.toLowerCase()) && item.rating >= parseInt(ratingValue));
             setDisplayProductData(data);
+            console.log(data);
+            console.log(sectionValue+categoryValue+brandValue+priceValue+ratingValue+search);
         }
         return () => {
             filterData();
@@ -101,11 +102,12 @@ function Explore() {
                         }}
                     >
                         <option value="">All</option>
-                        {
-                            section.map((type) => (
-                                <option value={type} >{type}</option>
-                            ))
-                        }
+                        <option value="male">Men</option>
+                        <option value="female">Women</option>
+                        <option value="kids">Kids</option>
+                        <option value="sports">Sports</option>
+
+                        
                     </select>
                 </div>
                 <div className='filter-area'>

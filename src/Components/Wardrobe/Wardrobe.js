@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Wardrobe.css'
 import Orderlist from '../cart/order/Orderlist'
 
@@ -30,11 +30,11 @@ function FavCard() {
             <label>Book Mark</label>
             <i class="fa fa-heart-o" aria-hidden="true" ></i>
           </div> */}
-          <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', width:'40%' }} href='http://localhost:3001/' >
+          <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', width: '40%' }} href='http://localhost:3001/' >
             <label>AR View</label>
             <i class="fa fa-street-view" aria-hidden="true" ></i>
           </a>
-          <div className='card-icons' style={{ backgroundColor: '#ff9f00', color: 'white', width:'40%' }} >
+          <div className='card-icons' style={{ backgroundColor: '#ff9f00', color: 'white', width: '40%' }} >
             <label>Add to Cart</label>
             <i class="fa fa-shopping-cart" aria-hidden="true" ></i>
           </div>
@@ -44,12 +44,62 @@ function FavCard() {
   )
 }
 
+function OrderDiv() {
+  const a = [1, 2, 3, 4, 5, 6, 7, 8, 9,];
+  return (
+    <div className='order-div-container' >
+      {
+        a.map((item, index)=>(
+          <FavCard/>
+        ))
+      }
+    </div>
+  )
+}
+
+function FavDiv() {
+  return (
+    <div>
+      Fav
+    </div>
+  )
+}
+
+function RecomendationDiv() {
+  return (
+    <div>
+      RecomendationDiv
+    </div>
+  )
+}
+
 
 function Wardrobe() {
-  const a = [1, 2, 3, 4, 5, 6, 7, 8,9,];
+  const [divIndex, setDivIndex] = useState(0);
+  const divisionArray = [<OrderDiv />, <FavDiv />, <RecomendationDiv />]
   return (
     <div className='wardrobe-container'>
-      wardrobe
+      <div className='wardrobe-top-container'>
+        <label
+          onClick={() => setDivIndex(0)}
+        >
+          Your Favourite
+        </label>
+        <label
+          onClick={() => setDivIndex(1)}
+        >
+          Your Orders
+        </label>
+        <label
+          onClick={() => setDivIndex(2)}
+        >
+          Recomendations
+        </label>
+      </div>
+      {
+        divisionArray[divIndex]
+      }
+
     </div>
   )
 }

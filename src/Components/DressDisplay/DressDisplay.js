@@ -8,9 +8,25 @@ import "react-toastify/dist/ReactToastify.css";
 
 // function DressDisplay({ open, onClose, product }) {
 function DressDisplay() {
-    const [product, setProducts] = useState({});
+    const [product, setProducts] = useState(
+        {
+            name: '',
+            brand: '',
+            rating: 0,
+            noOfRatings: 0,
+            price: 0,
+            off: 0,
+            gender: '',
+            categoty: '',
+            season: '',
+            loc: '',
+            size: [],
+            color: [],
+            images: []
+        }
+    );
 
-    const [displayImg, setDisplayImg] = useState("https://m.media-amazon.com/images/I/61VxZexOopL._UX679_.jpg");
+    const [displayImg, setDisplayImg] = useState(product.images[0]);
     // if (!open) return null;
 
     const addToCart = async (e) => {
@@ -69,9 +85,10 @@ function DressDisplay() {
     }
     useEffect(() => {
         const getProductData = () => {
-            setProducts(JSON.parse(sessionStorage.getItem("Display-Product")));
+            const Arr = JSON.parse(sessionStorage.getItem("Display-Product"));
+            setProducts(Arr);
             console.log(product);
-            console.log(product.images);
+            console.log(Arr);
         }
         return () => {
             getProductData();
@@ -95,7 +112,7 @@ function DressDisplay() {
                 </div>
                 <div className='wrapper-card-info-container'>
                     <div className='wrapper-card-info-header'>
-                        {/* <label style={{ fontSize: '1.5rem', fontWeight: '800' }} >Brand : {product.brand.toUpperCase()}</label> */}
+                        <label style={{ fontSize: '1.5rem', fontWeight: '800' }} >Brand : {product.brand.toUpperCase()}</label>
                         {/* <i class="fa fa-times" aria-hidden="true" style={{ marginRight: '1rem', fontWeight: 'bold', fontSize: '2rem', color: 'red' }} onClick={onClose}></i> */}
                     </div>
                     <div className='wrapper-card-info-price-section'>
@@ -150,6 +167,7 @@ function DressDisplay() {
                     </div>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }
