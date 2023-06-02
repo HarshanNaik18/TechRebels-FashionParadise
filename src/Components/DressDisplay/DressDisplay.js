@@ -159,7 +159,7 @@ function DressDisplay() {
                             <label>Book Mark</label>
                             <i class="fa fa-heart-o" aria-hidden="true" ></i>
                         </div>
-                        <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', textDecoration: "none" }} href='' >
+                        <a className='card-icons' style={{ backgroundColor: '#ff7f00', color: 'white', textDecoration: "none" }} href='http://127.0.0.1:5000' >
                             <label>AR View</label>
                             <i class="fa fa-street-view" aria-hidden="true" ></i>
                         </a>

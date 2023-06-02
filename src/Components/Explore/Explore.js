@@ -67,8 +67,8 @@ function Explore() {
     const [ratingValue, setRatingValue] = useState(0);
     const [search, setSearch] = useState('');
 
-    const Category = ["T-Shirt", "Topwear", "Bottomwear", "Raincoats", "Gowns", "Kurtas", "Ethnic-Sets", "Fabrics", "Sarees", "Kids", "Windcheaters", "Tracksuits", "Blazers", "Waistcoats"];
-    const brand = ['Puma', "Nike", "One8", "Levi's"];
+    const Category = ["Shirt", "Top", "Raincoats", "Kurta", "Ethnic wear", "Skirts","jeans", "sarees", "jump suits", "Windcheaters", "Trackpants", "jersey", "Waistcoats","shorts","casual","shoes","frock"];
+    const brand = ['Puma', "Nike", "One8", "Levi's","Yash Gallery","Kanishka","Hopscotch","SWORNOF","jusball","nauti nati"];
 
     // const filterData = () => {
     //     console.log(sectionValue+categoryValue+brandValue+priceValue+ratingValue+search);
@@ -113,6 +113,8 @@ function Explore() {
                         <option value="">All</option>
                         <option value="male">Men</option>
                         <option value="female">Women</option>
+                        <option value="boys">Boys</option>
+                        <option value="girls">Girls</option>
                         <option value="kids">Kids</option>
                         <option value="sports">Sports</option>
 

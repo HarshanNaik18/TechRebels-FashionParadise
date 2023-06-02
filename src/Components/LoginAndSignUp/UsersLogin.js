@@ -76,7 +76,7 @@ function UsersLogin() {
           <br />
           <br />
 
-          <h2>Ulternate methods</h2>
+          <h2>Alternate methods</h2>
           <br />
           <button style={{ background: 'none', display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '5px', borderRadius: '3px', color: 'black', width: '100%', justifyContent: 'center', gap: '1rem' }} onClick={handleGoogle} > <img style={{ width: '30px' }} src='https://www.outsystems.com/forge/DownloadResource.aspx?FileName=&ImageBinaryId=43951' alt='img' /> <span >LogIn with Google </span> </button>
         </div>
