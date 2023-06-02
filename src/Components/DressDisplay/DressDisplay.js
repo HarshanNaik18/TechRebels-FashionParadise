@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './DressDisplay.css'
 import { db } from '../../Firebase/Firebase'
-import { collection, setDoc, doc, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { auth } from '../../Firebase/Firebase';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -96,6 +96,7 @@ function DressDisplay() {
         //eslint-disable-next-line
     }, []);
 
+
     return (
         <div className='overlay-wrapper' >
             {/* <button onClick={onClose}>Click</button> */}
@@ -152,7 +153,9 @@ function DressDisplay() {
                         </ul>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', zIndex: '1' }}  >
-                        <div className='card-icons' style={{ backgroundColor: '#fb641b', color: 'white' }} onClick={addToFav} >
+                        <div className='card-icons' style={{ backgroundColor: '#fb641b', color: 'white' }}
+                         onClick={addToFav}
+                        >
                             <label>Book Mark</label>
                             <i class="fa fa-heart-o" aria-hidden="true" ></i>
                         </div>
@@ -167,7 +170,7 @@ function DressDisplay() {
                     </div>
                 </div>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     )
 }

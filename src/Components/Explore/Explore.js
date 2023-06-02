@@ -7,7 +7,6 @@ import { PoductsList } from '../../ProductData/ProductData';
 
 
 function ClothCard({ product }) {
-    const navigate = useNavigate();
 
     return (
         <div className='explore-section-card-container'>
@@ -25,19 +24,29 @@ function ClothCard({ product }) {
                         {product.off}% off
                     </label>
                 </label>
-                <label style={{ fontSize: '0.9rem', fontWeight: '800' }}>
-                    <label style={{ fontWeight: '800', color: '#3e4152', fontSize: '.75rem' }}>
-                        Size :
+                {
+                    product.size.length > 0 ?
+                        <label style={{ fontSize: '0.9rem', fontWeight: '800' }}>
+
+                            <label style={{ fontWeight: '800', color: '#3e4152', fontSize: '.75rem' }}>
+                                Size :
+                            </label>
+                            {
+                                product.size.map((size) => (
+                                    <>&nbsp;&nbsp;{size.toUpperCase()}</>
+                                ))
+                            }
+                            {/* &nbsp;S,&nbsp; M,&nbsp; L,&nbsp;XL */}
+                        </label> : 
+                        <label style={{ fontSize: '0.9rem', fontWeight: '800', color:'white' }}>
+                            Size :
+                        <label style={{ fontWeight: '800', color: '#3e4152', fontSize: '.75rem' }}>
+                        </label>
                     </label>
-                    {
-                        product.size.map((size) => (
-                            <>&nbsp;&nbsp;{size.toUpperCase()}</>
-                        ))
-                    }
-                    {/* &nbsp;S,&nbsp; M,&nbsp; L,&nbsp;XL */}
-                </label>
+                }
+
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', zIndex: '1' }}  >
-                    <div className='card-icons-one' style={{ backgroundColor: '#fb641b', color: 'white' }} >
+                    <div className='card-icons-one' >
                         <label>View in Detail</label>
                         <i class="" aria-hidden="true" ></i>
                     </div>
@@ -70,7 +79,7 @@ function Explore() {
             const data = PoductsList.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()) && item.brand.toLowerCase().includes(brandValue.toLowerCase()) && item.gender.toLowerCase().includes(categoryValue.toLowerCase()) && item.rating >= parseInt(ratingValue));
             setDisplayProductData(data);
             console.log(data);
-            console.log(sectionValue+categoryValue+brandValue+priceValue+ratingValue+search);
+            console.log(sectionValue + categoryValue + brandValue + priceValue + ratingValue + search);
         }
         return () => {
             filterData();
@@ -107,7 +116,7 @@ function Explore() {
                         <option value="kids">Kids</option>
                         <option value="sports">Sports</option>
 
-                        
+
                     </select>
                 </div>
                 <div className='filter-area'>

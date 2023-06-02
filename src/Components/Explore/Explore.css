@@ -168,7 +168,13 @@
     flex-direction: column;
     align-items: center;
     padding: 5px;
+    border:2px solid white;
     box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+}
+
+.explore-section-card-container:hover{
+    border:2px solid gainsboro;
+    transform: scale(1.025);
 }
 
 .explore-section-card-image {
@@ -235,6 +241,13 @@
     border-radius: 5px;
     gap: 5px;
     cursor: pointer;
+    color: white;
+    background: blue;
+    height: 1rem;
+}
+
+.card-icons-one:hover{
+    background:orangered
 }
 
 .card-icons-one label{

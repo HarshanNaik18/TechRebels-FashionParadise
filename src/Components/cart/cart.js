@@ -13,7 +13,7 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
 
   const Cartbg = styled.div`
-  background-color:${cartData.length > 0 ?'lightgrey':'white'};`
+  background-color:${cartData.length > 0 ? 'lightgrey' : 'white'};`
   useEffect(() => {
     const collectionRef = collection(db, "cart");
     const userid = auth.currentUser.uid;
@@ -38,12 +38,12 @@ const Cart = () => {
         <p>Your shopping basket</p>
       </div>
       {
-        cartData.length>0?
-        cartData && cartData.map((item, index) => (
-          <Basket product={item} key={index} />
-        ))
-        :
-        <h1 style={{width:'100%',textAlign:'center',background:'white'}} >Cart is Empty</h1>
+        cartData.length > 0 ?
+          cartData && cartData.map((item, index) => (
+            <Basket product={item} key={index} />
+          ))
+          :
+          <h1 style={{ width: '100%', textAlign: 'center', background: 'white' }} >Cart is Empty</h1>
       }
     </Cartbg>
   )
